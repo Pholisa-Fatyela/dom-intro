@@ -8,6 +8,7 @@ var textTotalAddBtn = document.querySelector(".addToBillBtn");
 var totalCostElem = document.querySelector(".totalOne");
 
 var callsTotalElem = document.querySelector(".callTotalOne");
+
 var smsTotalElem = document.querySelector(".smsTotalOne");
 
 //in the event listener check if the value in the bill type textbox is 'sms' or 'call'
@@ -18,7 +19,7 @@ function textBillTotal(){
     // get the value entered in the billType textfield
     var billTypeEntered = billTypeText.value.trim();
     // update the correct total
-    if (billTypeEntered === "bill"){
+    if (billTypeEntered === "call"){
         callsTotal += 2.75
     }
     else if (billTypeEntered === "sms"){
@@ -28,6 +29,7 @@ function textBillTotal(){
     //update the totals that is displayed on the screen.
     callsTotalElem.innerHTML = callsTotal.toFixed(2);
     smsTotalElem.innerHTML = smsTotal.toFixed(2);
+
     var totalCost = callsTotal + smsTotal;
     totalCostElem.innerHTML = totalCost.toFixed(2);
 
