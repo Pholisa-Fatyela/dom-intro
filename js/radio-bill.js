@@ -1,13 +1,11 @@
-// get a reference to the sms or call radio buttons
 var billItemTypeRadio = document.querySelector(".billItemTypeRadio");
-//get a reference to the add button
 var radioBillAddBtn	= document.querySelector(".radioBillAddBtn");
-//create a variable that will keep track of the total bill
 var total = document.querySelector(".totalTwo");
-var callTotal = document.querySelector(".callTotalTwo");
-var smsTotal = document.querySelector(".smsTotalTwo");
-//add an event listener for when the add button is pressed
+var callsTot = document.querySelector(".callTotalTwo");
+var smsTot = document.querySelector(".smsTotalTwo");
 
+var callTotal = 0;
+var smsTotal = 0;
 //in the event listener get the value from the billItemTypeRadio radio buttons
 // * add the appropriate value to the running total
 // * add nothing for invalid values that is not 'call' or 'sms'.
@@ -22,10 +20,10 @@ function radioBillTotal(){
         smsTotal += 0.75;
     }
 
-    callTotal.innerHTML = callTotal.toFixed(2);
-    smsTotal.innerHTML = callTotal.toFixed(2);
+    callsTot.innerHTML = callTotal.toFixed(2);
+    smsTot.innerHTML = smsTotal.toFixed(2);
     var totalSum = callTotal + smsTotal;
-    total.innerHTML = callTotal.toFixed(2);
+    total.innerHTML = totalSum.toFixed(2);
 
     if (totalSum >= 50) {
         total.classList.add('danger');
