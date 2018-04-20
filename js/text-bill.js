@@ -11,6 +11,10 @@ var callsTotalElem = document.querySelector(".callTotalOne");
 
 var smsTotalElem = document.querySelector(".smsTotalOne");
 
+// these variables are global and defined outside of the Add button event listener.
+var callsTotal = 0;
+var smsTotal = 0;
+
 //in the event listener check if the value in the bill type textbox is 'sms' or 'call'
 // * add the appropriate value to the running total
 // * add nothing for invalid values that is not 'call' or 'sms'.
@@ -42,9 +46,7 @@ function textBillTotal(){
         totalCostElem.classList.add("warning");
     }
 }
-// these variables are global and defined outside of the Add button event listener.
-var callsTotal = 0;
-var smsTotal = 0;
+
 
 // the event listener is declared below here
 //add an event listener for when the add button is pressed
