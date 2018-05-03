@@ -44,25 +44,29 @@ updateBtnElem.addEventListener('click', settingsUpdate);
 
 function calculateBillWithSetting() {
 
-    var checkedRadioBtnElem = document.querySelector("input[name='billItemTypeWithSettings']:checked");
-    var checkedRadioBtn = checkedRadioBtnElem.value;
-    console.log(checkedRadioBtn);
+    if(totalBill < critical){
+        var checkedRadioBtnElem = document.querySelector("input[name='billItemTypeWithSettings']:checked");
 
-    if (checkedRadioBtn === "call") {
-        totalCalls += callCost;
-    } else if (checkedRadioBtn = "sms") {
-        totalSmes += smsCost;
-    }
+        if (checkedRadioBtnElem){
+            var checkedRadioBtn = checkedRadioBtnElem.value;
 
-    callTotal.innerHTML = totalCalls.toFixed(2);
-    smsTotal.innerHTML = totalSmes.toFixed(2);
-    var totalSum = totalCalls + totalSmes;
-    totalSumElem.innerHTML = totalSum.toFixed(2);
+            if (checkedRadioBtn === "call") {
+                totalCalls += callCost;
+            } else if (checkedRadioBtn = "sms") {
+                totalSmes += smsCost;
+            }
 
-    if (totalSum >= critical) {
-        totalSumElem.classList.add("danger");
-    } else if (totalSum >= warning) {
-        totalSumElem.classList.add("warning");
+            callTotal.innerHTML = totalCalls.toFixed(2);
+            smsTotal.innerHTML = totalSmes.toFixed(2);
+            totalBill = totalCalls + totalSmes;
+            totalSumElem.innerHTML = totalBill.toFixed(2);
+        }
+
+        if (totalBill >= critical) {
+            totalSumElem.classList.add("danger");
+        } else if (totalBill >= warning) {
+            totalSumElem.classList.add("warning");
+        }
     }
 }
 calculateAddSettingsBtn.addEventListener('click', calculateBillWithSetting);
